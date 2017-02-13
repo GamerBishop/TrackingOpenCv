@@ -1,0 +1,3 @@
+/home/hugostrange/Documents/openCV/OpenCV/workspace/trackerVideo/CMakeFiles/edit_cache.dir
+/home/hugostrange/Documents/openCV/OpenCV/workspace/trackerVideo/CMakeFiles/rebuild_cache.dir
+/home/hugostrange/Documents/openCV/OpenCV/workspace/trackerVideo/CMakeFiles/trackerVideo.dir

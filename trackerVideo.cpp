@@ -200,9 +200,9 @@ int main( int argc, char** argv )
  	     	    // rectangle(finaleFrame,*trackingWindow,Scalar(255,0,0));
         
                 
-        namedWindow( "Resultat Meanshift", CV_WINDOW_AUTOSIZE );
-        imshow( "Resultat Meanshift", finaleFrame );
-        }
+        //namedWindow( "Resultat Meanshift", CV_WINDOW_AUTOSIZE );
+        //imshow( "Resultat Meanshift", finaleFrame );
+            //}
  	     	    	  	
         
  	     	    	

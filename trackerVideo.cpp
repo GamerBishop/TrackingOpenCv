@@ -149,52 +149,55 @@ int main( int argc, char** argv )
  	                namedWindow( "Display Denoised DifferenceKP", CV_WINDOW_AUTOSIZE );
                     imshow( "Display Denoised DifferenceKP", dstKp );
          	  
- 	     	  if (CoordPoints[0].x != s.width+1 && CoordPoints[0].y != s.height+1 && 
- 	     	        CoordPoints[1].x != -1 && CoordPoints[1].y != -1 && 
- 	     	        CoordPoints[1].x - CoordPoints[0].x !=0 && CoordPoints[1].y - CoordPoints[0].y !=0 ){ // Seulement si Rectangle OK
+ 	     	  //if (CoordPoints[0].x != s.width+1 && CoordPoints[0].y != s.height+1 && 
+ 	     	    //    CoordPoints[1].x != -1 && CoordPoints[1].y != -1 && 
+ 	     	      //  CoordPoints[1].x - CoordPoints[0].x !=0 && CoordPoints[1].y - CoordPoints[0].y !=0 ){ // Seulement si Rectangle OK
  	     	  
- 	     	    waitKey(0);
+ 	     	    //waitKey(0);
  	     	  
- 	     	      int  width = CoordPoints[1].x - CoordPoints[0].x ;
- 	     	      int  height = CoordPoints[1].y - CoordPoints[0].y ;
+ 	     	     // int  width = CoordPoints[1].x - CoordPoints[0].x ;
+ 	     	     // int  height = CoordPoints[1].y - CoordPoints[0].y ;
  	     	      
- 	     	    Rect *trackingWindow = new Rect(CoordPoints[0].y, CoordPoints[0].x, width, height);
+ 	     	    //Rect *trackingWindow = new Rect(CoordPoints[0].y, CoordPoints[0].x, width, height);
  	     	    
  	     	    
- 	     	    Size *test = new Size(width,height);
+ 	     	    //Size *test = new Size(width,height);
  	     	    
- 	     	    printf("Rect : \nX : %d\nY : %d\nWidth : %d\nHeight : %d\n\n", CoordPoints[0].x, CoordPoints[0].y, width, height);
- 	     	    RoI = new Mat(test);
- 	     	    dst.copyTo(RoI(Rect(CoordPoints[0].x, CoordPoints[0].y, width, height)));
- 	     	    cvtColor(RoI, hsvRoI, COLOR_BGR2HSV);
+ 	     	    //printf("Rect : \nX : %d\nY : %d\nWidth : %d\nHeight : %d\n\n", CoordPoints[0].x, CoordPoints[0].y, width, height);
+ 	     	    //Mat RoI(*test,1);
  	     	    
- 	     	    int bins[] = { 50 };
- 	     	    float hrange[] = {0.0 , 256.0};
- 	     	    const float* phranges = hrange;
- 	     	    const float* ranges{hrange};
- 	     	    int channels[] = {0,1};
+
+ 	     	   // RoI(Rect(CoordPoints[0].x, CoordPoints[0].y, width, height));
+ 	     	   // dst.copyTo(RoI);
+ 	     	   // cvtColor(RoI, hsvRoI, COLOR_BGR2HSV);
  	     	    
- 	     	    calcHist(&hsvRoI, 1, channels, Mat(), hist, 1, bins, &ranges, true, false);
- 	     	    normalize(hist, hist, 0, 255, NORM_MINMAX);
+ 	     	   // int bins[] = { 50 };
+ 	     	   // float hrange[] = {0.0 , 256.0};
+ 	     	   // const float* phranges = hrange;
+ 	     	   // const float* ranges{hrange};
+ 	     	   // int channels[] = {0,1};
  	     	    
- 	     	    
- 	     	    
- 	     	    
- 	     	    
- 	     	    
- 	     	    cvtColor(dst,dst,COLOR_GRAY2BGR);
- 	     	    cvtColor(dst,hsv,COLOR_BGR2HSV);
- 	     	    
- 	     	    calcBackProject(&hsv, 1,0, hist, backproj, &phranges);
- 	     	    
- 	     	    meanShift(backproj,*trackingWindow, TermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 10, 1 ));
- 	     	    
- 	     	    Point* Point1 = new Point(trackingWindow->x,trackingWindow->y);
- 	     	    Point* Point2 = new Point(trackingWindow->x+trackingWindow->width,trackingWindow->y+trackingWindow->height);
+ 	     	   // calcHist(&hsvRoI, 1, channels, Mat(), hist, 1, bins, &ranges, true, false);
+ 	     	   // normalize(hist, hist, 0, 255, NORM_MINMAX);
  	     	    
  	     	    
- 	     	    dst.copyTo(finaleFrame);
- 	     	    rectangle(finaleFrame,*trackingWindow,Scalar(255,0,0));
+ 	     	    
+ 	     	    
+ 	     	    
+ 	     	    
+ 	     	    // cvtColor(dst,dst,COLOR_GRAY2BGR);
+ 	     	    // cvtColor(dst,hsv,COLOR_BGR2HSV);
+ 	     	    
+ 	     	    // calcBackProject(&hsv, 1,0, hist, backproj, &phranges);
+ 	     	    
+ 	     	    // meanShift(backproj,*trackingWindow, TermCriteria(TermCriteria::EPS | TermCriteria::COUNT, 10, 1 ));
+ 	     	    
+ 	     	    // Point* Point1 = new Point(trackingWindow->x,trackingWindow->y);
+ 	     	    // Point* Point2 = new Point(trackingWindow->x+trackingWindow->width,trackingWindow->y+trackingWindow->height);
+ 	     	    
+ 	     	    
+ 	     	    // dst.copyTo(finaleFrame);
+ 	     	    // rectangle(finaleFrame,*trackingWindow,Scalar(255,0,0));
         
                 
         namedWindow( "Resultat Meanshift", CV_WINDOW_AUTOSIZE );
